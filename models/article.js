@@ -13,10 +13,6 @@ var ArticleSchema = new Schema({
       required: true,
       unique: true
    },
-   summary:{
-      type: String,
-      required: true
-   },
    link:{
       type: String
    },
@@ -24,11 +20,6 @@ var ArticleSchema = new Schema({
       type: Date,
       default: Date.now
    },
-    // notes property for the user
-   comments: {
-      type: Array
-   }
-   ,
     saved: {
       type: Boolean,
       default: false

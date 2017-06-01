@@ -4,9 +4,7 @@ var ReactDOM = require("react-dom");
 
 // We need to include all of the components we"re utilizing
 // Include the Header, Results, and Search components
-var Header = require("./components/Header");
-var Results = require("./components/Results");
-var Search = require("./components/Search");
+var Main = require("./components/Main");
 
 ReactDOM.render(
 // Here we dump all of the components into a single main-container

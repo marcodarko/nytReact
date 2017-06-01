@@ -38,7 +38,7 @@ app.use(express.static("public"));
 
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/scrapperRoutes.js");
+var routes = require("./controllers/routes.js");
 
 app.use('/',routes);
 
