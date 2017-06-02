@@ -24,14 +24,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(methodOverride("_method"));
 
-// HANDLEBARS
 
-// Set Handlebars.
-var exphbs = require("express-handlebars");
-
-
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
 
 // Make public a static dir
 app.use(express.static("public"));

@@ -15,9 +15,9 @@ var Main = React.createClass({
 
     return (
       <div className="container">
-      <Search/>
-      <Results/>
-      <Saved/>
+        <Search/>
+        <Results/>
+        <Saved/>
       </div>
 
     );

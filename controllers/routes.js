@@ -1,7 +1,7 @@
 
 // Require request and cheerio. This makes the scraping possible
 var request = require("request");
-var cheerio = require("cheerio");
+
 var mongoose = require("mongoose");
 
 var express = require("express");
@@ -68,7 +68,7 @@ router.put("/save/:ART", function(req, res){
 
 	 var ART= req.params.ART;
 
-	 Article.update({title: ART}, $set:{saved: true}, function(err, updated){
+	 Article.update({title: ART},{ $set:{saved: true} }, function(err, updated){
 			if(err){
 				console.log(err);
 			}
@@ -82,8 +82,8 @@ router.put("/save/:ART", function(req, res){
 router.post('/addNew', function(req, res){
 
 	var newArticle = new Article({
-				link: ,
-				title: 
+				link: "this",
+				title: "that"
 			});
 
 			newArticle.save(function(error, saved) {

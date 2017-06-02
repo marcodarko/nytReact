@@ -48,7 +48,7 @@ searchNYT: function(event){
 		for (i=0; i< NYTResults.length; i++){
 
 			AjaxPromise('addNew').then(found=>{
-				
+
 
 
 			});
@@ -73,9 +73,9 @@ searchNYT: function(event){
   render: function() {
 
     return (
-  		<div>
-	  		<form onSubmit={this.searchNYT}>
-	  			<input type="text" placeholder="Topic" id="topicInput"></input>
+  		<div className="jumbotron">
+	  		<form className="form-control" onSubmit={this.searchNYT}>
+	  			<input type="text" placeholder="Topic" id="topicInput" required></input>
 	  			<input type="text" placeholder="Start Year YYYY/MM/DD" id="startYearInput"></input>
 	  			<input type="text" placeholder="End Year YYYY/MM/DD" id="endYearInput"></input>
 	  			<input className="btn btn-lg btn-primary" type="submit"></input>
