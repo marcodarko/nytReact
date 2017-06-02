@@ -2,9 +2,9 @@
 var React = require("react");
 
 // Here we include all of the sub-components
-var Search = require("./app/components/Search");
-var Results = require("./app/components/Results");
-var Saved = require("./app/components/Saved");
+var Search = require("../components/Search");
+var Results = require("../components/Results");
+var Saved = require("../components/Saved");
 
 // This is the main component. It includes the banner and button.
 // Whenever you click the button it will communicate the click event to all other sub components.

@@ -1,7 +1,7 @@
 // Include React
 var React = require("react");
-var Article = require('./models/article.js');
-var ListItem = require('./app/components/ListItem.js');
+// var Article = require('../../models/article.js');
+var ListItem = require('./ListItem.js');
 
 // This is the main component. It includes the banner and button.
 // Whenever you click the button it will communicate the click event to all other sub components.
@@ -9,13 +9,17 @@ var Results = React.createClass({
 
 	loadArticles: function(){
 
-		Article.find({ saved: false },found =>{
+			AjaxPromise('/unsaved').then(found=>{
 
 			this.setState({
 				articleArray: found
 			});
-
 		});
+
+	},
+	componentWillMount: function(){
+
+		this.loadArticles();
 
 	},
 

@@ -46,6 +46,58 @@ router.get('/', function(req, res){
 
 });
 
+router.get('/saved', function(req, res){
+
+	Article.find({saved: true}, function(err, found){
+		if (err) throw err;
+		res.json(found);
+	});
+
+});
+
+router.get('/unsaved', function(req, res){
+
+	Article.find({saved: false}, function(err, found){
+		if (err) throw err;
+		res.json(found);
+	});
+
+});
+
+router.put("/save/:ART", function(req, res){
+
+	 var ART= req.params.ART;
+
+	 Article.update({title: ART}, $set:{saved: true}, function(err, updated){
+			if(err){
+				console.log(err);
+			}
+			else{
+				res.end();
+			}
+		});
+
+});
+
+router.post('/addNew', function(req, res){
+
+	var newArticle = new Article({
+				link: ,
+				title: 
+			});
+
+			newArticle.save(function(error, saved) {
+	          // If there's an error during this operation
+	          if (error) {
+	            console.log("ERROR SAVING ARTICLE: "+error);
+	        	}
+	        	else{
+	        		res.end();
+	        	}
+	          });
+
+});
+
 
 
 // Export routes for server.js to use.

@@ -3,7 +3,7 @@ var React = require("react");
 
 var AjaxPromise= require('ajax-promise');
 
-var Article = require('./models/article.js');
+// var Article = require('../../models/article.js');
 
 
 // This is the main component. It includes the banner and button.
@@ -44,24 +44,26 @@ searchNYT: function(event){
 
 		var NYTResults= data.response.docs;
 
-		// PASS STATE TO RESULT COMPONENT
-		// this.setState({
-		// 	myResults: data
-		// });
-
 		// INSTEAD SAVE TO MONGO
-		for (i=0, i< NYTResults.length; i++){
+		for (i=0; i< NYTResults.length; i++){
 
-			var newArticle = new Article({
-				link: NYTResults[i].web_url,
-				title: NYTResults[i].headline.main
+			AjaxPromise('addNew').then(found=>{
+				
+
+
 			});
 
-			newArticle.save(function(error, saved) {
-	          // If there's an error during this operation
-	          if (error) {
-	            console.log("ERROR SAVING ARTICLE: "+error);
-	          });
+			// var newArticle = new Article({
+			// 	link: NYTResults[i].web_url,
+			// 	title: NYTResults[i].headline.main
+			// });
+
+			// newArticle.save(function(error, saved) {
+	  //         // If there's an error during this operation
+	  //         if (error) {
+	  //           console.log("ERROR SAVING ARTICLE: "+error);
+	  //       	}
+	  //         });
 		};
 
 	});
