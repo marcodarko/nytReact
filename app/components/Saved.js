@@ -6,10 +6,15 @@ var AjaxPromise= require('ajax-promise');
 // This is the main component. It includes the banner and button.
 // Whenever you click the button it will communicate the click event to all other sub components.
 var Saved = React.createClass({
+  getInitialState() {
+    return {
+      savedArticleArray: [],
+    };
+  },
 
 	loadSavedArticles: function(){
 
-		AjaxPromise('/saved').then(found=>{
+		AjaxPromise.get('/saved').then(found=>{
 
 			this.setState({
 				savedArticleArray: found
@@ -29,7 +34,8 @@ var Saved = React.createClass({
   render: function() {
 
     return (
-    	<div>
+    	<div className="jumbotron">
+    	<h2>Saved Articles</h2>
     	{this.loadSavedArticles}
   		{this.state.savedArticleArray.map((art, i) => {
   			<div className="jumbotron" key={art._id}>

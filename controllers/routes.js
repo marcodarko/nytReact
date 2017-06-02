@@ -79,22 +79,39 @@ router.put("/save/:ART", function(req, res){
 
 });
 
-router.post('/addNew', function(req, res){
 
-	var newArticle = new Article({
-				link: "this",
-				title: "that"
-			});
 
-			newArticle.save(function(error, saved) {
-	          // If there's an error during this operation
-	          if (error) {
-	            console.log("ERROR SAVING ARTICLE: "+error);
-	        	}
-	        	else{
-	        		res.end();
-	        	}
-	          });
+router.get('/searchNYT', function(req, res){
+
+	var myTopic = req.body.topic;
+	if(!myTopic){
+		myTopic = "Cats";
+	}
+
+	var myStart = req.body.topic;
+	if (!myStart){
+		myStart = "20000101";
+	} 
+
+	var myEnd = req.body.topic;
+	if (!myEnd){
+		myEnd = "20171231";
+	} 
+
+	var authKey= "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
+
+	var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + myTopic + "&begin_date=" + myStart + "&end_date=" + myEnd ;
+
+	$.ajax({
+		url: queryURL,
+		method: "GET"
+	}).done(data=>{
+
+		var NYTResults= data.response.docs;
+
+		res.json(NYTResults);
+	});
+	
 
 });
 
