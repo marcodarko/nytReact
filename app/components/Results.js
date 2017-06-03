@@ -17,12 +17,21 @@ var Results = CreateReactClass({
   },
 
 	loadArticles: function(){
-			AjaxPromise.get('/unsaved').then(found=>{
-				this.setState({
-					articleArray: found
-				});
+
+		console.log("load articles IN");
+		
+		axios.get('/unsaved').then(data=>{
+
+			console.log(data.data);
+
+			for (var i =0; i<data.length; i++) {
+				
+			}
+
 		});
+
 	},
+
   componentDidMount: function(){
 
 		this.loadArticles();

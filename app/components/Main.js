@@ -3,8 +3,8 @@ var React = require("react");
 
 // Here we include all of the sub-components
 var Search = require("../components/Search");
-var Results = require("../components/Results");
-var Saved = require("../components/Saved");
+// var Results = require("../components/Results");
+// var Saved = require("../components/Saved");
 var CreateReactClass = require('create-react-class');
 
 // This is the main component. It includes the banner and button.
@@ -17,8 +17,6 @@ var Main = CreateReactClass({
     return (
       <div className="container">
         <Search/>
-        <Results/>
-        <Saved/>
       </div>
 
     );

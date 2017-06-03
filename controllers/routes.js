@@ -58,8 +58,9 @@ router.get('/saved', function(req, res){
 router.get('/unsaved', function(req, res){
 
 	Article.find({saved: false}, function(err, found){
-		if (err) throw err;
-		res.json(found);
+		if (err) res.send(err);
+
+		res.send(found);
 	});
 
 });
@@ -81,36 +82,22 @@ router.put("/save/:ART", function(req, res){
 
 
 
-router.get('/searchNYT', function(req, res){
+router.post('/saveNew', function(req, res){
 
-	var myTopic = req.body.topic;
-	if(!myTopic){
-		myTopic = "Cats";
-	}
+	//console.log("body: "+ req.body.headline);
 
-	var myStart = req.body.topic;
-	if (!myStart){
-		myStart = "20000101";
-	} 
-
-	var myEnd = req.body.topic;
-	if (!myEnd){
-		myEnd = "20171231";
-	} 
-
-	var authKey= "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
-
-	var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + myTopic + "&begin_date=" + myStart + "&end_date=" + myEnd ;
-
-	$.ajax({
-		url: queryURL,
-		method: "GET"
-	}).done(data=>{
-
-		var NYTResults= data.response.docs;
-
-		res.json(NYTResults);
+	var newArticle = new Article({
+		headline: req.body.healine,
+		link: req.body.link
 	});
+
+	newArticle.save(function(err, saved){
+		if (err) res.send(err);
+		
+			console.log("saved one thing");
+			res.send(saved);
+		
+	})
 	
 
 });
