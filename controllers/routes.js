@@ -68,12 +68,14 @@ router.get('/unsaved', function(req, res){
 router.put("/save/:ART", function(req, res){
 
 	 var ART= req.params.ART;
+	 console.log(ART);
 
-	 Article.update({title: ART},{ $set:{saved: true} }, function(err, updated){
+	 Article.update({headline: ART},{ $set:{saved: true} }, function(err, updated){
 			if(err){
 				console.log(err);
 			}
 			else{
+				console.log("got saved");
 				res.end();
 			}
 		});

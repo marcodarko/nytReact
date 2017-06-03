@@ -1,20 +1,21 @@
 // Include React
 var React = require("react");
-// var Article = require('./models/article.js');
-var AjaxPromise= require('ajax-promise');
 var CreateReactClass = require('create-react-class');
+var axios = require('axios');
 
 // This is the main component. It includes the banner and button.
 // Whenever you click the button it will communicate the click event to all other sub components.
 var Saved = CreateReactClass({
 
-	saveArticle: function(articleToSave){
+	saveArticle: function(event, articleToSave){
 
-		// AjaxPromise('/save/'+articleToSave).then(saved=>{
+    
+    console.log(articleToSave);
 
-		// 	console.log("saved OK");
-
-		// });
+  	 axios.put('/save/'+ articleToSave).then((err,saved)=>{
+          if (err) console.log(err);
+          console.log("saved");
+     });
 
 	},
 
@@ -27,7 +28,7 @@ var Saved = CreateReactClass({
   				<a href={this.props.url} target="_blank"> {this.props.title} </a>
   			</td>
   			<td>
-  				<button onClick={this.saveArticle(this.props.title)} className="btn btn-md btn-success themeButtom" type="button">SAVE</button>
+  				<button onClick={ (e) => this.saveArticle(e, this.props.title) } className="btn btn-md btn-success themeButtom" type="button">SAVE</button>
   			</td>
   		</tr>
 

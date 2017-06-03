@@ -15,12 +15,7 @@ var Saved = CreateReactClass({
 
 	loadSavedArticles: function(){
 
-		AjaxPromise.get('/saved').then(found=>{
 
-			this.setState({
-				savedArticleArray: found
-			});
-		});
 
 
 	},
@@ -37,7 +32,6 @@ var Saved = CreateReactClass({
     return (
     	<div className="jumbotron">
     	<h3>Saved Articles</h3>
-    	{this.loadSavedArticles}
   		{this.state.savedArticleArray.map((art, i) => {
   			<div className="jumbotron" key={art._id}>
   				<a href={art.link} target="_blank">SAVED: {art.healine}</a>
