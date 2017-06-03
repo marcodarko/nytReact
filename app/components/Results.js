@@ -4,10 +4,11 @@ var React = require("react");
 var ListItem = require('./ListItem.js');
 var AjaxPromise = require('ajax-promise');
 var axios = require('axios');
+var CreateReactClass = require('create-react-class');
 
 // This is the main component. It includes the banner and button.
 // Whenever you click the button it will communicate the click event to all other sub components.
-var Results = React.createClass({
+var Results = CreateReactClass({
 
   getInitialState() {
     return {

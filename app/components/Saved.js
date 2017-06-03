@@ -2,10 +2,11 @@
 var React = require("react");
 // var Article = require('./models/article.js');
 var AjaxPromise= require('ajax-promise');
+var CreateReactClass = require('create-react-class');
 
 // This is the main component. It includes the banner and button.
 // Whenever you click the button it will communicate the click event to all other sub components.
-var Saved = React.createClass({
+var Saved = CreateReactClass({
   getInitialState() {
     return {
       savedArticleArray: [],

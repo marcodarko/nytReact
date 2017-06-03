@@ -1,10 +1,11 @@
 // Include React
 var React = require("react");
 var axios = require('axios');
+var CreateReactClass = require('create-react-class');
 
 // This is the main component. It includes the banner and button.
 // Whenever you click the button it will communicate the click event to all other sub components.
-var Search = React.createClass({
+var Search = CreateReactClass({
 
 searchNYT: function(event){
 
@@ -30,10 +31,19 @@ searchNYT: function(event){
 	var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + myTopic + "&begin_date=" + myStart + "&end_date=" + myEnd ;
 
 	console.log("sending axios request");
-	return axios.get(queryURL).done(data=>{
+	
+	axios.get(queryURL).then(response=>{
 
-		var NYTResults= data.response.docs;
+		console.log(response);
+
+		var NYTResults= response.data.response.docs;
 		console.log("NYT R: "+NYTResults);
+
+		this.setState({
+			something: NYTResults[0]
+		})
+
+		console.log(this.state.something)
 
 	});
 
