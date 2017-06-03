@@ -10,11 +10,11 @@ var Saved = CreateReactClass({
 
 	saveArticle: function(articleToSave){
 
-		AjaxPromise('/save/'+articleToSave).then(saved=>{
+		// AjaxPromise('/save/'+articleToSave).then(saved=>{
 
-			console.log("saved OK");
+		// 	console.log("saved OK");
 
-		});
+		// });
 
 	},
 
