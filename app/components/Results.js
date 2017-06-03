@@ -18,17 +18,19 @@ var Results = CreateReactClass({
 
 	loadArticles: function(){
 
-		console.log("load articles IN");
+		//console.log("load articles IN");
 		
-		axios.get('/unsaved').then(data=>{
+		axios.get('/unsaved').then(response=>{
 
-			console.log(data.data);
+			console.log(response.data.length);
+			console.log(typeof response.data);
+			console.log(response.data[0]);
 
-			for (var i =0; i<data.length; i++) {
-				
-			}
+			
+			
 
 		});
+
 
 	},
 
@@ -41,13 +43,13 @@ var Results = CreateReactClass({
 	render: function(){
 		//console.log(this.state);
 		return (
-			<div className="jumbotron">
-			<h2>Results</h2>
-			<table className="table">
-  			{this.state.articleArray.map(function(singleArticle, i){
-  				return <ListItem title={singleArticle.headline} url={singleArticle.link} key={singleArticle._id}/>
-  			})}
-  			</table>
+			<div className="jumbotron resultsBox">
+				<h3>Results</h3>
+				<table className="table">
+		  			{this.state.articleArray.map((singleArticle, i)=>{
+		  				return <ListItem title={singleArticle.headline} url={singleArticle.link} key={singleArticle._id}/>
+		  			})}
+	  			</table>
   			</div>
   			);
 	}

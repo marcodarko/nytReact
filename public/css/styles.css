@@ -48,6 +48,16 @@ font-family: sans-serif;
 	background-color: rgba(0,0,0,.4);
 }
 
+.jumbotron h3{
+	color: white;
+}
+
+.resultsBox{
+
+	max-height: 400px;
+	overflow: scroll;
+}
+
 
 .themeButton:hover{
 

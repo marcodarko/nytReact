@@ -36,7 +36,7 @@ var Saved = CreateReactClass({
 
     return (
     	<div className="jumbotron">
-    	<h2>Saved Articles</h2>
+    	<h3>Saved Articles</h3>
     	{this.loadSavedArticles}
   		{this.state.savedArticleArray.map((art, i) => {
   			<div className="jumbotron" key={art._id}>

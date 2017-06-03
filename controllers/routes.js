@@ -60,7 +60,7 @@ router.get('/unsaved', function(req, res){
 	Article.find({saved: false}, function(err, found){
 		if (err) res.send(err);
 
-		res.send(found);
+		res.json(found);
 	});
 
 });
@@ -84,17 +84,21 @@ router.put("/save/:ART", function(req, res){
 
 router.post('/saveNew', function(req, res){
 
-	//console.log("body: "+ req.body.headline);
+	console.log("body H: "+ req.body.headline);
+	console.log("body L: "+ req.body.link);
 
-	var newArticle = new Article({
-		headline: req.body.healine,
+	var newArticle = new Article(
+	{
+		headline: req.body.headline,
 		link: req.body.link
 	});
+
+	console.log("object: "+newArticle);
 
 	newArticle.save(function(err, saved){
 		if (err) res.send(err);
 		
-			console.log("saved one thing");
+			console.log(saved);
 			res.send(saved);
 		
 	})

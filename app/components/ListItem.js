@@ -16,8 +16,6 @@ var Saved = CreateReactClass({
 
 		});
 
-		
-
 	},
 
   // Here we render the function
@@ -29,7 +27,7 @@ var Saved = CreateReactClass({
   				<a href={this.props.url} target="_blank"> {this.props.title} </a>
   			</td>
   			<td>
-  				<button onClick={this.saveArticle(this.props.title)} className="btn btn-md btn-success" type="button">SAVE</button>
+  				<button onClick={this.saveArticle(this.props.title)} className="btn btn-md btn-success themeButtom" type="button">SAVE</button>
   			</td>
   		</tr>
 
