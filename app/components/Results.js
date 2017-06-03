@@ -17,14 +17,8 @@ var Results = CreateReactClass({
   },
 
 	loadArticles: function(){
-
-		//console.log("load articles IN");
 		
 		axios.get('/unsaved').then(response=>{
-
-			// console.log(response.data.length);
-			// console.log(typeof response.data);
-			// console.log(response.data[0]);
 
 			var articles = [];
 			
@@ -34,17 +28,9 @@ var Results = CreateReactClass({
 
 			this.setState({ articleArray: articles });
 
-			console.log("1: "+this.state.articleArray);
+			// console.log("1: "+this.state.articleArray);
+			// console.log("2: "+this.state.articleArray.length);
 
-			// this.state.articleArray= response.data
-
-			console.log("2: "+this.state.articleArray.length);
-			// console.log("3: "+this.state.articleArray[0].headline);
-			// console.log(this.state.articleArray[0]);
-			// console.log(typeof this.state.articleArray[0]);
-			// {this.state.articleArray.map((singleArticle, i)=>{
-		 //  				return (<ListItem title={singleArticle.headline} url={singleArticle.link} key={singleArticle._id}/>)
-		 //  			})}
 
 		});
 
@@ -58,19 +44,17 @@ var Results = CreateReactClass({
 	},
 
 	render: function(){
-		//console.log(this.state);
-		var x;
+
+		var LIST;
 
 		if(this.state.articleArray.length) {
-			x= this.state.articleArray.map(function(item, index) {
-				console.log(JSON.stringify(item));
-				if(item) {
-					
+			LIST= this.state.articleArray.map(function(item, index) {
+				//console.log(JSON.stringify(item));
+				if(item) {					
 					return <ListItem title={ item.headline} url={ item.link} key={ item._id}/>
 				} else {
 					return <ListItem title="EMPTY" url="www.blank.com" key="0"/>
 				}
-
 		   		
 			});
 		}
@@ -79,10 +63,10 @@ var Results = CreateReactClass({
 			<div className="jumbotron resultsBox">
 				<h3>Results</h3>
 				<table className="table">
-				<tbody>
-		  			{
-		  				x
-		  			}
+					<tbody>
+			  			{
+			  				LIST
+			  			}
 		  			</tbody>
 	  			</table>
   			</div>
