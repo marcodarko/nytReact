@@ -1,7 +1,6 @@
 // Include React
 var React = require("react");
-// var Article = require('./models/article.js');
-var AjaxPromise= require('ajax-promise');
+var axios = require('axios');
 var CreateReactClass = require('create-react-class');
 
 // This is the main component. It includes the banner and button.
@@ -13,16 +12,30 @@ var Saved = CreateReactClass({
     };
   },
 
-	loadSavedArticles: function(){
+    loadUnsavedArticles: function(){
+    
+    axios.get('/saved').then(response=>{
+
+      var articles = [];
+      
+      for (var key in response.data) {
+        articles.push(response.data[key]);
+      }
+
+      this.setState({ savedArticleArray: articles });
+
+      // console.log("1: "+this.state.articleArray);
+      // console.log("2: "+this.state.articleArray.length);
 
 
+    });
 
 
-	},
+  },
 
 	componentWillMount: function(){
 
-		this.loadSavedArticles();
+		this.loadUnsavedArticles();
 
 	},
 
@@ -34,7 +47,7 @@ var Saved = CreateReactClass({
     	<h3>Saved Articles</h3>
   		{this.state.savedArticleArray.map((art, i) => {
   			<div className="jumbotron" key={art._id}>
-  				<a href={art.link} target="_blank">SAVED: {art.healine}</a>
+  				<a href={art.link} target="_blank">SAVED: {art.headline}</a>
   			</div>
   		})}
   		</div>
