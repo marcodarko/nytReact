@@ -42,14 +42,30 @@ var Saved = CreateReactClass({
   // Here we render the function
   render: function() {
 
+        var LIST;
+
+    if(this.state.savedArticleArray.length) {
+      LIST= this.state.savedArticleArray.map(function(item, index) {
+        //console.log(JSON.stringify(item));
+        if(item) {          
+          return (
+                 <div className="jumbotron" key={item._id}>
+                  <a className="themeButton" href={item.link} target="_blank">SAVED: {item.headline}</a>
+                </div>
+                )
+        } else {
+          return <h4>NOTHING</h4>
+        }
+          
+      });
+    }
+
     return (
     	<div className="jumbotron">
     	<h3>Saved Articles</h3>
-  		{this.state.savedArticleArray.map((art, i) => {
-  			<div className="jumbotron" key={art._id}>
-  				<a href={art.link} target="_blank">SAVED: {art.headline}</a>
-  			</div>
-  		})}
+  		{
+        LIST
+      }
   		</div>
     );
   }

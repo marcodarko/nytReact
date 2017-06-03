@@ -18,8 +18,8 @@ var router = express.Router();
 // var Schema = mongoose.Schema;
 
 // URI's
-//var uri = "mongodb://heroku_hh5n6b27:p8v2o7n4v5fhiklklhunrff349@ds157641.mlab.com:57641/heroku_hh5n6b27";
-var uri = "mongodb://localhost/nytreact";
+var uri = "mongodb://heroku_hh5n6b27:p8v2o7n4v5fhiklklhunrff349@ds157641.mlab.com:57641/heroku_hh5n6b27";
+//var uri = "mongodb://localhost/nytreact";
 
 mongoose.connect(uri);
 
